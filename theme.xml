@@ -1,0 +1,901 @@
+<!--
+    TexGriddy-es-de for EmulationStation Desktop Edition
+    Author: Stuart Learmonth
+    License: Creative Commons CC-BY-NC-SA
+-->
+
+<theme>
+    <include>./navigationsounds.xml</include>
+    <include>./colors.xml</include> 
+    <include>./languages.xml</include> 
+    <include>./system/metadata/_default.xml</include>
+    <include>./system/custom/metadata/_default.xml</include>
+    <include>./system/custom/metadata/${system.theme}.xml</include>
+    <include>./system/metadata/${system.theme}.xml</include>
+    <include>./font.xml</include>
+
+    <variables>
+        <primaryFont>./core/fonts/berlin.ttf</primaryFont>
+        <secondaryFont>./core/fonts/berlinb.ttf</secondaryFont>
+        <syslogo>./system/logos/system-logo-white/${system.theme}.svg</syslogo>
+        <syslogocustom>./system/custom/logo/${system.theme}.svg</syslogocustom>
+    </variables> 
+
+    <aspectRatio name="4:3">
+        <include>./4-3.xml</include>
+    </aspectRatio>
+
+    <aspectRatio name="16:10">
+        <include>./16-10.xml</include>
+    </aspectRatio>
+
+    <aspectRatio name="21:9">
+        <include>./21-9.xml</include>
+    </aspectRatio>
+
+    <variant name="textwithVideos, textwithoutVideos">
+        <view name="system">
+            <carousel name="system_carousel">
+                <pos>0.02 0.7</pos>
+                <size>0.96 .2</size>
+                <staticImage>${syslogo}</staticImage>
+                <defaultImage>${syslogocustom}</defaultImage>
+                <imageColor>${textlogoColor}</imageColor>
+                <imageColorEnd>${textlogoColorEnd}</imageColorEnd>
+                <color>${outlineColor1}</color>
+                <colorEnd>${outlineColor2}</colorEnd>
+                <itemSize>0.18 0.18</itemSize>
+                <itemScale>1.3</itemScale>
+                <maxItemCount>3</maxItemCount>
+                <unfocusedItemOpacity>.5</unfocusedItemOpacity>
+                <text>${system.fullName}</text>
+                <textColor>${backgroundColor}</textColor>
+                <fontPath>${primaryFont}</fontPath>
+                <fontSize>0.03</fontSize>
+                <letterCase>uppercase</letterCase>
+                <lineSpacing>0.8</lineSpacing>
+			    <zIndex>29</zIndex>
+            </carousel>
+            <text name="number">
+                <pos>0.81 0.52</pos>
+                <size>0 0.05</size>
+                <origin>1 .5</origin>
+                <text>${langLabelContain}:</text>
+                <fontPath>${primaryFont}</fontPath>
+                <fontSize>${sysgame}</fontSize>
+                <horizontalAlignment>left</horizontalAlignment>
+                <color>${textColor}</color>
+            </text>    
+            <text name="game_counter">
+                <pos>0.815 0.52</pos>
+                <size>0.2 0.05</size>
+                <origin>0 0.5</origin>
+                <systemdata>gamecountGames</systemdata>
+                <fontPath>${primaryFont}</fontPath>
+                <fontSize>${sysgame}</fontSize>
+                <horizontalAlignment>left</horizontalAlignment>
+                <color>${textColor}</color>
+                <zIndex>50</zIndex>
+            </text>
+            <helpsystem name="help">
+                <pos>.95 0.92</pos>
+			    <origin>1 0</origin>
+			    <fontPath>${primaryFont}</fontPath>
+                <textColor>${helpColor}</textColor>
+                <iconColor>${helpColor}</iconColor>
+                <fontSize>${helpsize}</fontSize>
+            </helpsystem>
+        </view>
+        <view name="gamelist">
+            <helpsystem name="help">
+                <pos>${helppos}</pos>
+			    <origin>1 1</origin>
+			    <fontPath>${primaryFont}</fontPath>
+                <textColor>${helpColor}</textColor>
+                <iconColor>${helpColor}</iconColor>
+                <fontSize>${helpgamesize}</fontSize>
+            </helpsystem>
+                  
+            <textlist name="gamelist_grid">
+                <pos>0.037 0.19</pos>
+                <size>0.315 0.76</size>
+                <origin>0 0</origin>
+                <horizontalMargin>0.015</horizontalMargin>
+                <fontSize>${helpsize}</fontSize>
+                <fontPath>${primaryFont}</fontPath>
+                <selectorColor>${selectedColor}</selectorColor>
+                <selectedColor>${selectedTextColor}</selectedColor>
+                <selectorImagePath>./core/images/outline1.svg</selectorImagePath>
+                <selectorHorizontalOffset>-.006</selectorHorizontalOffset>
+                <primaryColor>${textColor}</primaryColor>
+                <secondaryColor>${textColor}</secondaryColor>
+            </textlist>
+            
+        </view>
+
+    <view name="system, gamelist">
+        <image name="background">
+            <pos>0 0</pos>
+            <size>1 1</size>
+            <path>./core/images/background.png</path>
+            <color>${backgroundColor}</color>
+            <colorEnd>${backgroundMixColor}</colorEnd>
+            <zIndex>0</zIndex>
+        </image>
+        <image name="outline1">
+            <pos>0 0</pos>
+            <size>1 1</size>
+            <path>./core/images/outline2.svg</path>
+            <color>${outlineColor1}</color>
+            <colorEnd>${outlineColor2}</colorEnd>
+            <zIndex>5</zIndex>		
+        </image>
+        <systemstatus name="menustatus">
+        <pos>0.975 0.015</pos>
+        <origin>1 0</origin>
+		<height>0.0275</height>
+        <color>${backgroundColor}</color>
+        <entries>all</entries>
+            <fontPath>${primaryFont}</fontPath>
+        </systemstatus>
+        <clock name="menuclock">
+            <fontSize>0.0275</fontSize>
+            <rotation>0</rotation>
+            <pos>0.025 0.005</pos>
+            <size>0.6 0.04</size>
+            <origin>0 0</origin>
+            <fontPath>${primaryFont}</fontPath>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <color>${backgroundColor}</color>
+        </clock>
+    </view>
+
+    <view name="system">
+        <image name="consolegame">
+            <pos>0.8 0.35</pos>
+            <maxSize>0.3 0.3</maxSize>
+            <origin>0.5 0.5</origin>
+            <path>./system/controller-outline/${system.theme}.svg</path>
+            <color>${gridColor}</color>
+            <colorEnd>${selectedColor}</colorEnd>
+        </image>	     
+        <text name="info">
+            <pos>0.05 0.1</pos>
+            <size>0.6 0.55</size>
+            <text>${systemDescription}</text>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>${sysgame}</fontSize>
+            <container>true</container>
+            <horizontalAlignment>left</horizontalAlignment>
+            <color>${textColor}</color>
+        </text>
+        
+    </view>
+
+    <view name="gamelist">
+        <image name="logo">
+            <pos>0.2175 0.0925</pos>
+            <maxSize>0.22 0.07</maxSize>
+            <origin>0.5 0.5</origin>
+            <path>${syslogo}</path>
+            <default>${syslogocustom}</default>
+            <color>${gamelogoColor}</color>
+            <colorEnd>${gamelogoEndColor}</colorEnd>
+        </image> 
+        <image name="handheld">
+            <pos>0.062 0.105</pos>
+            <maxSize>0.055 0.09</maxSize>
+            <origin>0.5 0.5</origin>
+            <path>./core/handhelds/${system.theme}.png</path>
+        </image> 
+        <image name="backtile">
+            <pos>0.025 0.048</pos>
+            <size>0.325 0.12</size>
+            <path>./core/images/outline.svg</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>
+        <image name="backtile2">
+            <pos>0.032 0.055</pos>
+            <size>0.06 0.105</size>
+            <path>./core/images/frame.png</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>
+        <text name="title">
+            <pos>0.525 0.065</pos>
+            <size>0.44 0.085</size>
+            <fontPath>${secondaryFont}</fontPath>
+            <color>${backgroundColor}</color>
+            <fontSize>0.04</fontSize>
+            <metadata>name</metadata>
+            <horizontalAlignment>center</horizontalAlignment>
+            <lineSpacing>1</lineSpacing>
+        </text> 
+        <image name="backdrop">
+            <pos>0.51 0.0375</pos>
+            <size>0.47 0.57</size>
+            <path>./core/images/outline.svg</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>  
+        <image name="backtdrop2">
+            <pos>0.525 0.065</pos>
+            <size>0.44 0.085</size>
+            <path>./core/images/frame.png</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>     
+        <image name="box">
+            <pos>0.43 0.425</pos>
+            <maxSize>0.15 0.38</maxSize>
+            <origin>0.5 0.5</origin>
+            <imageType>cover</imageType>
+            <interpolation>nearest</interpolation>
+            <scrollFadeIn>true</scrollFadeIn>
+        </image>
+        <text name="md_lbl_releasedate, md_lbl_developer, md_lbl_publisher,
+                    md_lbl_genre, md_lbl_players, md_lbl_lastplayed, md_players">
+            <size>0.14 0.03</size>
+            <fontPath>${secondaryFont}</fontPath>
+            <fontSize>0.025</fontSize>
+            <color>${headerColor}</color>
+            <letterCase>uppercase</letterCase>
+        </text>
+        <text name="md_developer, md_publisher, md_genre">
+            <size>0.14 0.03</size>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>0.02</fontSize>
+            <color>${metaTextColor}</color>
+            <letterCase>uppercase</letterCase>
+        </text>
+        <text name="md_description">
+            <pos>0.52 0.6</pos>
+            <size>0.45 0.34</size>
+            <container>true</container>
+            <containerVerticalSnap>true</containerVerticalSnap>
+            <containerScrollSpeed>1</containerScrollSpeed>
+            <containerStartDelay>4.5</containerStartDelay>
+            <containerResetDelay>7</containerResetDelay>
+            <metadata>description</metadata>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>${helpsize}</fontSize>
+            <color>${textColor}</color>
+            <lineSpacing>1</lineSpacing>
+        </text>
+        <datetime name="md_releasedate, md_lastplayed">
+            <size>0.14 0.03</size>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>0.02</fontSize>
+            <color>${metaTextColor}</color>
+            <letterCase>uppercase</letterCase>
+        </datetime>
+        <image name="release">
+            <pos>0.355 0.62</pos>
+            <size>0.15 0.05</size>
+            <path>./core/images/date.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <datetime name="md_releasedate">
+            <pos>0.39 0.62</pos>
+            <size>0.11 0.05</size>
+            <metadata>releasedate</metadata>
+            <horizontalAlignment>center</horizontalAlignment>
+            <fontSize>0.024</fontSize>
+            <defaultValue>:space:</defaultValue>
+        </datetime>
+        <image name="dev">
+            <pos>0.355 0.68</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/dev.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <text name="md_developer">
+            <pos>0.39 0.68</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>developer</metadata>
+            <defaultValue>:space:</defaultValue>
+        </text>
+        <image name="pub">
+            <pos>0.355 0.75</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/pub.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <text name="md_publisher">
+            <pos>0.39 0.75</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>publisher</metadata>
+            <defaultValue>:space:</defaultValue>
+        </text>
+        <image name="genre">
+            <pos>0.355 0.82</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/genre.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <text name="md_genre">
+            <pos>0.39 0.82</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>genre</metadata>
+            <defaultValue>:space:</defaultValue>
+        </text>
+        <text name="md_lbl_players">
+            <pos>0.132 0.133</pos>
+            <text>${langLabelPlayers}</text>
+            <fontSize>0.03</fontSize>
+            <metadataElement>true</metadataElement>
+        </text>
+        <text name="md_players">
+            <pos>-0.01 0.1315</pos>
+            <horizontalAlignment>right</horizontalAlignment>
+            <metadata>players</metadata>
+            <defaultValue>1</defaultValue>
+            <fontSize>0.033</fontSize>
+        </text>
+        <image name="lastplayed">
+            <pos>0.355 0.89</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/last.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <datetime name="md_lastplayed">
+            <pos>0.39 0.89</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>lastplayed</metadata>
+            <defaultValue>:space:</defaultValue>
+        </datetime>
+        <rating name="md_rating">
+            <pos>0.24 0.1315</pos>
+            <size>0 0.03</size>
+            <interpolation>nearest</interpolation>
+            <color>${headerColor}</color>
+            <filledPath>./core/images/rating_filled.svg</filledPath>
+            <unfilledPath>./core/images/rating_empty.svg</unfilledPath>
+            <overlay>false</overlay>
+        </rating>
+        
+        <badges name="md_badges">
+            <pos>0.355 0.052</pos>
+            <size>0.15 0.3</size>
+            <horizontalAlignment>left</horizontalAlignment>
+            <direction>column</direction>
+            <lines>1</lines>
+            <itemsPerLine>3</itemsPerLine>
+            <customBadgeIcon badge="altemulator">./core/badge/altemulator.png</customBadgeIcon>
+            <customBadgeIcon badge="favorite">./core/badge/fave.png</customBadgeIcon>
+            <customBadgeIcon badge="completed">./core/badge/complete.png</customBadgeIcon>
+            <slots>completed, favorite, altemulator</slots>
+            <badgeIconColor>${boxColor}</badgeIconColor>
+        </badges>
+
+        <badges name="leftovers">
+            <pos>0.52 0.15</pos>
+            <size>0.05 0.4</size>
+            <horizontalAlignment>right</horizontalAlignment>
+            <direction>column</direction>
+            <lines>1</lines>
+            <itemsPerLine>5</itemsPerLine>
+            <slots>broken, kidgame, collection, folder,manual</slots>
+            <customBadgeIcon badge="folder">./core/badge/folder.png</customBadgeIcon>
+            <customBadgeIcon badge="broken">./core/badge/broken.png</customBadgeIcon>
+            <customBadgeIcon badge="kidgame">./core/badge/kid.png</customBadgeIcon>
+            <customBadgeIcon badge="collection">./core/badge/collection.png</customBadgeIcon>
+            
+            <customBadgeIcon badge="manual">./core/badge/manual.png</customBadgeIcon>
+            <badgeIconColor>${boxColor}</badgeIconColor>
+            <itemMargin>0.000001 0.000001</itemMargin>
+        </badges>
+        <badges name="md_badges4">
+            <pos>0.036 0.0625</pos>
+            <size>0.1 0.09</size>
+            <horizontalAlignment>left</horizontalAlignment>
+            <direction>row</direction>
+            <lines>1</lines>
+            <itemsPerLine>1</itemsPerLine>
+            <slots>controller</slots>
+            <customBadgeIcon badge="controller">./core/badge/controller.svg</customBadgeIcon>   
+            <controllerPos>0.5 0.5</controllerPos>
+            <controllerSize>1.25</controllerSize>
+            <badgeIconColor>${boxColor}</badgeIconColor>
+        </badges> 
+        <badges name="all">
+            <customBadgeIcon badge="folder">./core/badge/folder.png</customBadgeIcon>
+            <customBadgeIcon badge="broken">./core/badge/broken.png</customBadgeIcon>
+            <customBadgeIcon badge="kidgame">./core/badge/kid.png</customBadgeIcon>
+            <customBadgeIcon badge="collection">./core/badge/collection.png</customBadgeIcon>
+            <customBadgeIcon badge="altemulator">./core/badge/altemulator.png</customBadgeIcon>
+            <customBadgeIcon badge="favorite">./core/badge/fave.png</customBadgeIcon>
+            <customBadgeIcon badge="completed">./core/badge/complete.png</customBadgeIcon>
+            <customBadgeIcon badge="controller">./core/badge/controller.svg</customBadgeIcon>   
+    
+        </badges> 
+    </view>
+    </variant>
+    
+    <variant name="textwithVideos">
+        <view name="gamelist">
+            <video name="md_video">
+                <pos>0.745 0.37</pos>
+                <maxSize>0.45 0.4</maxSize>
+                <origin>0.5 0.5</origin>
+                <imageType>image</imageType>
+                <interpolation>nearest</interpolation>
+                <pillarboxes>false</pillarboxes>
+                <pillarboxThreshold>0.85 0.90</pillarboxThreshold>
+                <delay>1.7</delay>
+                <scrollFadeIn>true</scrollFadeIn>
+            </video>
+        </view>
+    </variant>
+
+    <variant name="textwithoutVideos">
+        <view name="gamelist">
+            <image name="md_image">
+                <pos>0.745 0.37</pos>
+                <maxSize>0.45 0.4</maxSize>
+                <origin>0.5 0.5</origin>
+                <imageType>image</imageType>
+                <interpolation>nearest</interpolation>
+                <scrollFadeIn>true</scrollFadeIn>
+            </image>
+        </view>
+    </variant>
+
+    
+
+    
+    <variant name="withVideos, withoutVideos">
+        <view name="system">
+            <grid name="system_grid">
+                <pos>0.045 0.47</pos>
+                <size>0.92 .5</size>
+                <staticImage>${syslogo}</staticImage>
+                <defaultImage>${syslogocustom}</defaultImage>
+                <imageColor>${syslogoColor}</imageColor>
+                <itemSize>${sysgrid}</itemSize>
+                <itemSpacing>0 0</itemSpacing>
+                <imageRelativeScale>0.65</imageRelativeScale>
+                <itemScale>1</itemScale>
+                <backgroundImage>./core/images/tile.svg</backgroundImage>
+                <backgroundColor>${gridColor}</backgroundColor>
+                <unfocusedItemOpacity>1</unfocusedItemOpacity>
+                <selectorLayer>middle</selectorLayer>
+                <selectorImage>./core/images/select.svg</selectorImage>
+                <selectorColor>${selectedColor}</selectorColor>
+                <selectorRelativeScale>1</selectorRelativeScale>
+                <text>${system.fullName}</text>
+                <textColor>${syslogoColor}</textColor>
+                <textRelativeScale>0.65</textRelativeScale>
+                <fontPath>${primaryFont}</fontPath>
+                <fontSize>0.02</fontSize>
+                <letterCase>uppercase</letterCase>
+                <lineSpacing>0.8</lineSpacing>
+			    <zIndex>29</zIndex>
+            </grid>
+            <text name="number">
+                <pos>0.81 0.42</pos>
+                <size>0 0.05</size>
+                <origin>1 .5</origin>
+                <text>${langLabelContain}:</text>
+                <fontPath>${primaryFont}</fontPath>
+                <fontSize>${sysgame}</fontSize>
+                <horizontalAlignment>left</horizontalAlignment>
+                <color>${textColor}</color>
+            </text>
+            <text name="game_counter">
+                <pos>0.815 0.42</pos>
+                <size>0.2 0.05</size>
+                <origin>0 0.5</origin>
+                <systemdata>gamecountGames</systemdata>
+                <fontPath>${primaryFont}</fontPath>
+                <fontSize>${sysgame}</fontSize>
+                <horizontalAlignment>left</horizontalAlignment>
+                <color>${textColor}</color>
+                <zIndex>50</zIndex>
+            </text>
+            <helpsystem name="help">
+                <pos>.95 0.935</pos>
+			    <origin>1 0</origin>
+			    <fontPath>${primaryFont}</fontPath>
+                <textColor>${helpColor}</textColor>
+                <iconColor>${helpColor}</iconColor>
+                <fontSize>${helpsize}</fontSize>
+            </helpsystem>
+        </view>
+        <view name="gamelist">
+            <helpsystem name="help">
+                <pos>${helppos}</pos>
+			    <origin>1 1</origin>
+			    <fontPath>${primaryFont}</fontPath>
+                <textColor>${helpColor}</textColor>
+                <iconColor>${helpColor}</iconColor>
+                <fontSize>${helpgamesize}</fontSize>
+            </helpsystem>
+        </view>
+        <view name="gamelist">
+            <grid name="gamelist_grid">
+                <pos>0.5 0.51</pos>
+                <size>0.94 0.46</size>
+                <origin>0.5 0</origin>
+                <itemSize>${gamegrid}</itemSize>
+                <imageType>marquee</imageType>
+                <imageFit>contain</imageFit>
+                <imageRelativeScale>0.65</imageRelativeScale>
+                <backgroundImage>./core/images/tile.svg</backgroundImage>
+                <backgroundColor>${gridColor}</backgroundColor>
+                <unfocusedItemOpacity>1</unfocusedItemOpacity>
+                <selectorLayer>middle</selectorLayer>
+                <selectorImage>./core/images/select.svg</selectorImage>
+                <selectorColor>${selectedColor}</selectorColor>
+                <selectorRelativeScale>1</selectorRelativeScale>
+                <textColor>${syslogoColor}</textColor>
+                <textRelativeScale>0.65</textRelativeScale>
+                <fontPath>${primaryFont}</fontPath>
+                <fontSize>0.02</fontSize>
+                <letterCase>uppercase</letterCase>
+                <lineSpacing>0.8</lineSpacing>
+            </grid>
+        </view>
+
+    <view name="system, gamelist">
+        <image name="background">
+            <pos>0 0</pos>
+            <size>1 1</size>
+            <path>./core/images/background.png</path>
+            <color>${backgroundColor}</color>
+            <colorEnd>${backgroundMixColor}</colorEnd>
+            <zIndex>0</zIndex>
+        </image>
+        <image name="outline1">
+            <pos>0 0</pos>
+            <size>1 1</size>
+            <path>./core/images/outline2.svg</path>
+            <color>${outlineColor1}</color>
+            <colorEnd>${outlineColor2}</colorEnd>
+            <zIndex>5</zIndex>		
+        </image>
+        <systemstatus name="menustatus">
+        <pos>0.975 0.015</pos>
+        <origin>1 0</origin>
+		<height>0.0275</height>
+        <color>${backgroundColor}</color>
+        <entries>all</entries>
+            <fontPath>${primaryFont}</fontPath>
+        </systemstatus>
+        <clock name="menuclock">
+            <fontSize>0.0275</fontSize>
+            <rotation>0</rotation>
+            <pos>0.025 0.005</pos>
+            <size>0.6 0.04</size>
+            <origin>0 0</origin>
+            <fontPath>${primaryFont}</fontPath>
+            <horizontalAlignment>left</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <color>${backgroundColor}</color>
+        </clock>
+    </view>
+
+    <view name="system">
+        <image name="consolegame">
+            <pos>0.8 0.25</pos>
+            <maxSize>0.3 0.3</maxSize>
+            <origin>0.5 0.5</origin>
+            <path>./system/controller-outline/${system.theme}.svg</path>
+            <color>${gridColor}</color>
+            <colorEnd>${selectedColor}</colorEnd>
+        </image>	     
+       <text name="info">
+            <pos>0.05 0.1</pos>
+            <size>0.6 0.35</size>
+            <text>${systemDescription}</text>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>${sysgame}</fontSize>
+            <container>true</container>
+            <horizontalAlignment>left</horizontalAlignment>
+            <color>${textColor}</color>
+        </text>
+    </view>
+
+    <view name="gamelist">
+        <image name="logo">
+            <pos>0.2175 0.0925</pos>
+            <maxSize>0.22 0.07</maxSize>
+            <origin>0.5 0.5</origin>
+            <path>${syslogo}</path>
+            <default>${syslogocustom}</default>
+            <color>${gamelogoColor}</color>
+            <colorEnd>${gamelogoEndColor}</colorEnd>
+        </image> 
+        <image name="handheld">
+            <pos>0.072 0.105</pos>
+            <maxSize>0.055 0.09</maxSize>
+            <origin>0.5 0.5</origin>
+            <path>./core/handhelds/${system.theme}.png</path>
+        </image> 
+        <image name="backtile">
+            <pos>0.035 0.048</pos>
+            <size>0.3 0.12</size>
+            <path>./core/images/outline.svg</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>
+        <image name="backtile2">
+            <pos>0.0425 0.055</pos>
+            <size>0.06 0.105</size>
+            <path>./core/images/frame.png</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>
+        <text name="title">
+            <pos>0.36 0.0625</pos>
+            <size>0.26 0.085</size>
+            <fontPath>${secondaryFont}</fontPath>
+            <color>${backgroundColor}</color>
+            <fontSize>0.035</fontSize>
+            <metadata>name</metadata>
+            <horizontalAlignment>center</horizontalAlignment>
+            <lineSpacing>1</lineSpacing>
+        </text> 
+        <image name="backdrop">
+            <pos>0.35 0.04</pos>
+            <size>0.28 0.48</size>
+            <path>./core/images/outline.svg</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>  
+        <image name="backtdrop2">
+            <pos>0.36 0.0625</pos>
+            <size>0.259 0.085</size>
+            <path>./core/images/frame.png</path>
+            <color>${boxColor}</color>
+            <zIndex>5</zIndex>
+        </image>     
+        <image name="box">
+            <pos>0.89 0.2775</pos>
+            <maxSize>0.16 0.335</maxSize>
+            <origin>0.5 0.5</origin>
+            <imageType>cover</imageType>
+            <interpolation>nearest</interpolation>
+            <scrollFadeIn>true</scrollFadeIn>
+        </image>
+        <text name="md_lbl_releasedate, md_lbl_developer, md_lbl_publisher,
+                    md_lbl_genre, md_lbl_players, md_lbl_lastplayed, md_players">
+            <size>0.14 0.03</size>
+            <fontPath>${secondaryFont}</fontPath>
+            <fontSize>0.025</fontSize>
+            <color>${headerColor}</color>
+            <letterCase>uppercase</letterCase>
+        </text>
+        <text name="md_developer, md_publisher, md_genre">
+            <size>0.14 0.03</size>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>0.02</fontSize>
+            <color>${metaTextColor}</color>
+            <letterCase>uppercase</letterCase>
+        </text>
+        <text name="md_description">
+            <pos>0.04 0.17</pos>
+            <size>0.3 0.33</size>
+            <container>true</container>
+            <containerVerticalSnap>true</containerVerticalSnap>
+            <containerScrollSpeed>1</containerScrollSpeed>
+            <containerStartDelay>4.5</containerStartDelay>
+            <containerResetDelay>7</containerResetDelay>
+            <metadata>description</metadata>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>${helpsize}</fontSize>
+            <color>${textColor}</color>
+            <lineSpacing>1</lineSpacing>
+        </text>
+        <datetime name="md_releasedate, md_lastplayed">
+            <size>0.14 0.03</size>
+            <fontPath>${primaryFont}</fontPath>
+            <fontSize>0.02</fontSize>
+            <color>${metaTextColor}</color>
+            <letterCase>uppercase</letterCase>
+        </datetime>
+        <image name="release">
+            <pos>0.65 0.05</pos>
+            <size>0.15 0.05</size>
+            <path>./core/images/date.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <datetime name="md_releasedate">
+            <pos>0.685 0.05</pos>
+            <size>0.11 0.05</size>
+            <metadata>releasedate</metadata>
+            <defaultValue>:space:</defaultValue>
+            <horizontalAlignment>center</horizontalAlignment>
+            <fontSize>0.024</fontSize>
+        </datetime>
+        <image name="dev">
+            <pos>0.65 0.11</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/dev.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <text name="md_developer">
+            <pos>0.685 0.11</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>developer</metadata>
+            <defaultValue>:space:</defaultValue>
+        </text>
+        <image name="pub">
+            <pos>0.65 0.18</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/pub.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <text name="md_publisher">
+            <pos>0.685 0.18</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>publisher</metadata>
+            <defaultValue>:space:</defaultValue>
+        </text>
+        <image name="genre">
+            <pos>0.65 0.25</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/genre.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <text name="md_genre">
+            <pos>0.685 0.25</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>genre</metadata>
+            <defaultValue>:space:</defaultValue>
+        </text>
+        <text name="md_lbl_players">
+            <pos>0.132 0.133</pos>
+            <text>players</text>
+            <fontSize>0.03</fontSize>
+            <metadataElement>true</metadataElement>
+        </text>
+        <text name="md_players">
+            <pos>-0.01 0.1315</pos>
+            <horizontalAlignment>right</horizontalAlignment>
+            <metadata>players</metadata>
+            <defaultValue>1</defaultValue>
+            <fontSize>0.033</fontSize>
+        </text>
+        <image name="lastplayed">
+            <pos>0.65 0.32</pos>
+            <size>0.15 0.06</size>
+            <path>./core/images/last.png</path>
+            <color>${boxColor}</color>
+        </image>
+        <datetime name="md_lastplayed">
+            <pos>0.685 0.32</pos>
+            <size>0.11 0.06</size>
+            <horizontalAlignment>center</horizontalAlignment>
+            <verticalAlignment>center</verticalAlignment>
+            <metadata>lastplayed</metadata>            
+            <defaultValue>:space:</defaultValue>
+        </datetime>
+        <rating name="md_rating">
+            <pos>0.24 0.1315</pos>
+            <size>0 0.03</size>
+            <interpolation>nearest</interpolation>
+            <color>${headerColor}</color>
+            <filledPath>./core/images/rating_filled.svg</filledPath>
+            <unfilledPath>./core/images/rating_empty.svg</unfilledPath>
+            <overlay>false</overlay>
+        </rating>
+        
+        <badges name="md_badges">
+            <pos>0.65 0.39</pos>
+            <size>0.31 0.3</size>
+            <horizontalAlignment>left</horizontalAlignment>
+            <direction>column</direction>
+            <lines>2</lines>
+            <itemsPerLine>2</itemsPerLine>
+            <customBadgeIcon badge="altemulator">./core/badge/altemulator.png</customBadgeIcon>
+            <customBadgeIcon badge="favorite">./core/badge/fave.png</customBadgeIcon>
+            <customBadgeIcon badge="completed">./core/badge/complete.png</customBadgeIcon>
+            <badgeIconColor>${boxColor}</badgeIconColor>
+            <slots>completed, favorite</slots>
+        </badges>
+        <badges name="altemu">
+            <pos>0.82 0.454</pos>
+            <size>0.152 0.05</size>
+            <horizontalAlignment>left</horizontalAlignment>
+            <direction>row</direction>
+            <lines>1</lines>
+            <itemsPerLine>1</itemsPerLine>
+            <slots>altemulator</slots>
+            <customBadgeIcon badge="altemulator">./core/badge/altemulator.png</customBadgeIcon>
+            <badgeIconColor>${boxColor}</badgeIconColor>
+            
+        </badges>
+        <badges name="leftovers">
+            <pos>0.81 0.045</pos>
+            <size>0.15 0.07</size>
+            <horizontalAlignment>right</horizontalAlignment>
+            <direction>row</direction>
+            <lines>1</lines>
+            <itemsPerLine>5</itemsPerLine>
+            <slots>broken, kidgame, collection, folder,manual</slots>
+            <customBadgeIcon badge="folder">./core/badge/folder.png</customBadgeIcon>
+            <customBadgeIcon badge="broken">./core/badge/broken.png</customBadgeIcon>
+            <customBadgeIcon badge="kidgame">./core/badge/kid.png</customBadgeIcon>
+            <customBadgeIcon badge="collection">./core/badge/collection.png</customBadgeIcon>
+            <customBadgeIcon badge="manual">./core/badge/manual.png</customBadgeIcon>
+            <badgeIconColor>${boxColor}</badgeIconColor>
+            
+            <itemMargin>0.000001 0.000001</itemMargin>
+        </badges>
+        <badges name="md_badges4">
+            <pos>0.047 0.0625</pos>
+            <size>0.1 0.09</size>
+            <horizontalAlignment>left</horizontalAlignment>
+            <direction>row</direction>
+            <lines>1</lines>
+            <itemsPerLine>1</itemsPerLine>
+            <slots>controller</slots>
+            <customBadgeIcon badge="controller">./core/badge/controller.svg</customBadgeIcon>   
+            <controllerPos>0.5 0.5</controllerPos>
+            <controllerSize>1.25</controllerSize>
+        </badges> 
+        <badges name="all">
+            <customBadgeIcon badge="folder">./core/badge/folder.png</customBadgeIcon>
+            <customBadgeIcon badge="broken">./core/badge/broken.png</customBadgeIcon>
+            <customBadgeIcon badge="kidgame">./core/badge/kid.png</customBadgeIcon>
+            <customBadgeIcon badge="collection">./core/badge/collection.png</customBadgeIcon>
+            <customBadgeIcon badge="altemulator">./core/badge/altemulator.png</customBadgeIcon>
+            <customBadgeIcon badge="favorite">./core/badge/fave.png</customBadgeIcon>
+            <customBadgeIcon badge="completed">./core/badge/complete.png</customBadgeIcon>
+            <customBadgeIcon badge="controller">./core/badge/controller.svg</customBadgeIcon>   
+    
+        </badges> 
+    </view>
+    </variant>
+    
+    
+            
+
+    <variant name="withVideos">
+        <view name="gamelist">
+            <video name="md_video">
+                <pos>0.49 0.325</pos>
+                <maxSize>0.26 0.35</maxSize>
+                <origin>0.5 0.5</origin>
+                <imageType>image</imageType>
+                <interpolation>nearest</interpolation>
+                <pillarboxes>false</pillarboxes>
+                <pillarboxThreshold>0.85 0.90</pillarboxThreshold>
+                <delay>1.7</delay>
+                <scrollFadeIn>true</scrollFadeIn>
+            </video>
+        </view>
+    </variant>
+
+    <variant name="withoutVideos">
+        <view name="gamelist">
+            <image name="md_image">
+                <pos>0.49 0.325</pos>
+                <maxSize>0.27 0.345</maxSize>
+                <origin>0.5 0.5</origin>
+                <imageType>image</imageType>
+                <interpolation>nearest</interpolation>
+                <scrollFadeIn>true</scrollFadeIn>
+            </image>
+        </view>
+    </variant>
+
+    
+</theme>
