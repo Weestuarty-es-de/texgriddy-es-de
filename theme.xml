@@ -245,7 +245,7 @@
         </text>
         <text name="md_developer, md_publisher, md_genre">
             <size>0.14 0.03</size>
-            <fontPath>${primaryFont}</fontPath>
+            <fontPath>${secondaryFont}</fontPath>
             <fontSize>0.02</fontSize>
             <color>${metaTextColor}</color>
             <letterCase>uppercase</letterCase>
@@ -264,13 +264,20 @@
             <color>${textColor}</color>
             <lineSpacing>1</lineSpacing>
         </text>
-        <datetime name="md_releasedate, md_lastplayed">
+        <datetime name="md_releasedate">
             <size>0.14 0.03</size>
-            <fontPath>${primaryFont}</fontPath>
+            <fontPath>${secondaryFont}</fontPath>
             <fontSize>0.02</fontSize>
             <color>${metaTextColor}</color>
             <letterCase>uppercase</letterCase>
         </datetime>
+        <text name="md_lastplayed">
+            <size>0.14 0.03</size>
+            <fontPath>${secondaryFont}</fontPath>
+            <fontSize>0.02</fontSize>
+            <color>${metaTextColor}</color>
+            <letterCase>uppercase</letterCase>
+        </text>
         <image name="release">
             <pos>0.355 0.62</pos>
             <size>0.15 0.05</size>
@@ -346,14 +353,14 @@
             <path>./core/images/last.png</path>
             <color>${boxColor}</color>
         </image>
-        <datetime name="md_lastplayed">
+        <text name="md_lastplayed">
             <pos>0.39 0.89</pos>
             <size>0.11 0.06</size>
             <horizontalAlignment>center</horizontalAlignment>
             <verticalAlignment>center</verticalAlignment>
-            <metadata>lastplayed</metadata>
+            <metadata>playtime</metadata>
             <defaultValue>:space:</defaultValue>
-        </datetime>
+        </text>
         <rating name="md_rating">
             <pos>0.24 0.1315</pos>
             <size>0 0.03</size>
@@ -678,7 +685,7 @@
         </text>
         <text name="md_developer, md_publisher, md_genre">
             <size>0.14 0.03</size>
-            <fontPath>${primaryFont}</fontPath>
+            <fontPath>${secondaryFont}</fontPath>
             <fontSize>0.02</fontSize>
             <color>${metaTextColor}</color>
             <letterCase>uppercase</letterCase>
@@ -697,13 +704,20 @@
             <color>${textColor}</color>
             <lineSpacing>1</lineSpacing>
         </text>
-        <datetime name="md_releasedate, md_lastplayed">
+        <datetime name="md_releasedate">
             <size>0.14 0.03</size>
-            <fontPath>${primaryFont}</fontPath>
+            <fontPath>${secondaryFont}</fontPath>
             <fontSize>0.02</fontSize>
             <color>${metaTextColor}</color>
             <letterCase>uppercase</letterCase>
         </datetime>
+        <text name="md_lastplayed">
+            <size>0.14 0.03</size>
+            <fontPath>${secondaryFont}</fontPath>
+            <fontSize>0.02</fontSize>
+            <color>${metaTextColor}</color>
+            <letterCase>uppercase</letterCase>
+        </text>
         <image name="release">
             <pos>0.65 0.05</pos>
             <size>0.15 0.05</size>
@@ -779,14 +793,14 @@
             <path>./core/images/last.png</path>
             <color>${boxColor}</color>
         </image>
-        <datetime name="md_lastplayed">
+        <text name="md_lastplayed">
             <pos>0.685 0.32</pos>
             <size>0.11 0.06</size>
             <horizontalAlignment>center</horizontalAlignment>
             <verticalAlignment>center</verticalAlignment>
-            <metadata>lastplayed</metadata>            
+            <metadata>playtime</metadata>            
             <defaultValue>:space:</defaultValue>
-        </datetime>
+        </text>
         <rating name="md_rating">
             <pos>0.24 0.1315</pos>
             <size>0 0.03</size>
@@ -824,8 +838,8 @@
         </badges>
         <badges name="leftovers">
             <pos>0.81 0.045</pos>
-            <size>0.15 0.07</size>
-            <horizontalAlignment>right</horizontalAlignment>
+            <size>0.15 0.09</size>
+            <horizontalAlignment>center</horizontalAlignment>
             <direction>row</direction>
             <lines>1</lines>
             <itemsPerLine>5</itemsPerLine>
